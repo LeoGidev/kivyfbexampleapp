@@ -24,3 +24,6 @@ class Post(BoxLayout):
             markup=True,
             font_size=18,
         ))
+
+        # Post content
+        self.add_widget(Label(
