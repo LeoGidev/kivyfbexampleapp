@@ -5,6 +5,7 @@ from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
+from kivy.graphics import Color, Rectangle
 
 
 class Post(BoxLayout):
@@ -14,7 +15,14 @@ class Post(BoxLayout):
         self.spacing = 10
         self.size_hint_y = None
         self.height = 300
-        self.background_color = (1, 1, 1, 1)  # Fondo blanco para cada post
+
+        # Fondo blanco para el post
+        with self.canvas.before:
+            Color(1, 1, 1, 1)  # Blanco
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+
+        # Actualizar el tamaño y la posición del fondo cuando cambie el tamaño del widget
+        self.bind(size=self._update_rect, pos=self._update_rect)
 
         # Username label
         self.add_widget(Label(
@@ -24,7 +32,7 @@ class Post(BoxLayout):
             halign='left',
             markup=True,
             font_size=18,
-            color=(0.23, 0.35, 0.60, 1),  # Azul oscuro estilo Facebook
+            color=(0.23, 0.35, 0.60, 1),  # Azul oscuro
         ))
 
         # Post content
@@ -36,7 +44,7 @@ class Post(BoxLayout):
             valign='top',
             text_size=(self.width, None),
             font_size=16,
-            color=(0.15, 0.15, 0.15, 1),  # Gris oscuro para texto
+            color=(0.15, 0.15, 0.15, 1),  # Gris oscuro
         ))
 
         # Post image
@@ -60,19 +68,27 @@ class Post(BoxLayout):
         ))
         self.add_widget(buttons_layout)
 
+    def _update_rect(self, *args):
+        self.rect.size = self.size
+        self.rect.pos = self.pos
+
 
 class MainApp(App):
     def build(self):
         root = BoxLayout(orientation='vertical')
 
         # App Header
-        header = BoxLayout(size_hint_y=None, height=60, padding=10, spacing=10, background_color=(0.23, 0.35, 0.60, 1))
+        header = BoxLayout(size_hint_y=None, height=60, padding=10, spacing=10)
+        with header.canvas.before:
+            Color(0.23, 0.35, 0.60, 1)  # Azul oscuro
+            Rectangle(size=header.size, pos=header.pos)
+        header.bind(size=self._update_header_rect, pos=self._update_header_rect)
         header.add_widget(Label(
             text="[b]My Social App[/b]",
             font_size=24,
             markup=True,
             halign='center',
-            color=(1, 1, 1, 1),  # Blanco para texto
+            color=(1, 1, 1, 1),  # Blanco
         ))
         root.add_widget(header)
 
@@ -93,6 +109,11 @@ class MainApp(App):
         root.add_widget(scroll_view)
 
         return root
+
+    def _update_header_rect(self, *args):
+        header_rect = self.root.children[1].canvas.children[0]
+        header_rect.size = self.root.children[1].size
+        header_rect.pos = self.root.children[1].pos
 
 
 if __name__ == '__main__':
