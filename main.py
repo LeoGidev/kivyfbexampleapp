@@ -48,3 +48,17 @@ class Post(BoxLayout):
         buttons_layout.add_widget(Button(text="Like"))
         buttons_layout.add_widget(Button(text="Comment"))
         self.add_widget(buttons_layout)
+
+
+class MainApp(App):
+    def build(self):
+        root = BoxLayout(orientation='vertical')
+
+        # App Header
+        header = BoxLayout(size_hint_y=None, height=60, padding=10, spacing=10)
+        header.add_widget(Label(
+            text="[b]My Social App[/b]",
+            font_size=24,
+            markup=True,
+            halign='center'
+        ))
