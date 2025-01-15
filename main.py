@@ -22,3 +22,5 @@ class Post(BoxLayout):
             height=40,
             halign='left',
             markup=True,
+            font_size=18,
+        ))
