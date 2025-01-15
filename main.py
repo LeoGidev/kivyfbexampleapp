@@ -11,3 +11,4 @@ class Post(BoxLayout):
     def __init__(self, username, text, image_src, **kwargs):
         super().__init__(orientation='vertical', **kwargs)
         self.padding = 10
+        self.spacing = 10
