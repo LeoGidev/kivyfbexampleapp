@@ -111,9 +111,12 @@ class MainApp(App):
         return root
 
     def _update_header_rect(self, *args):
-        header_rect = self.root.children[1].canvas.children[0]
-        header_rect.size = self.root.children[1].size
-        header_rect.pos = self.root.children[1].pos
+        header = self.root.children[1]  # Obtén el encabezado
+        with header.canvas.before:
+            for instruction in header.canvas.before.children:
+                if isinstance(instruction, Rectangle):  # Busca el Rectangle
+                    instruction.size = header.size
+                    instruction.pos = header.pos
 
 
 if __name__ == '__main__':
