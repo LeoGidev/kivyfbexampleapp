@@ -42,3 +42,9 @@ class Post(BoxLayout):
             size_hint_y=None,
             height=150,
         ))
+
+        # Like and Comment buttons
+        buttons_layout = BoxLayout(size_hint_y=None, height=40)
+        buttons_layout.add_widget(Button(text="Like"))
+        buttons_layout.add_widget(Button(text="Comment"))
+        self.add_widget(buttons_layout)
