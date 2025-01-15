@@ -35,3 +35,10 @@ class Post(BoxLayout):
             text_size=(self.width, None),
             font_size=16,
         ))
+
+        # Post image
+        self.add_widget(Image(
+            source=image_src,
+            size_hint_y=None,
+            height=150,
+        ))
