@@ -17,4 +17,5 @@ class Post(BoxLayout):
 
         # Username label
         self.add_widget(Label(
-            text=f"[b]{username}[/b]"
+            text=f"[b]{username}[/b]",
+            size_hint_y=None,
