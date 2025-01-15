@@ -21,3 +21,4 @@ class Post(BoxLayout):
             size_hint_y=None,
             height=40,
             halign='left',
+            markup=True,
