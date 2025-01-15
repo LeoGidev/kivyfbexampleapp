@@ -28,3 +28,10 @@ class Post(BoxLayout):
         # Post content
         self.add_widget(Label(
             text=text,
+            size_hint_y=None,
+            height=80,
+            halign='left',
+            valign='top',
+            text_size=(self.width, None),
+            font_size=16,
+        ))
