@@ -27,3 +27,4 @@ class Post(BoxLayout):
 
         # Post content
         self.add_widget(Label(
+            text=text,
