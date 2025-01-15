@@ -62,3 +62,26 @@ class MainApp(App):
             markup=True,
             halign='center'
         ))
+        root.add_widget(header)
+
+        # Scrollable feed
+        scroll_view = ScrollView()
+        feed = GridLayout(cols=1, size_hint_y=None, spacing=10)
+        feed.bind(minimum_height=feed.setter('height'))
+
+        # Add example posts
+        for i in range(5):
+            feed.add_widget(Post(
+                username=f"User {i + 1}",
+                text=f"Here is a sample post content for User {i + 1}.",
+                image_src="path_to_sample_image.jpg"  # Replace with an actual image path
+            ))
+
+        scroll_view.add_widget(feed)
+        root.add_widget(scroll_view)
+
+        return root
+
+
+if __name__ == '__main__':
+    MainApp().run()
