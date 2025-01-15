@@ -13,3 +13,4 @@ class Post(BoxLayout):
         self.padding = 10
         self.spacing = 10
         self.size_hint_y = None
+        self.height = 300
