@@ -12,3 +12,4 @@ class Post(BoxLayout):
         super().__init__(orientation='vertical', **kwargs)
         self.padding = 10
         self.spacing = 10
+        self.size_hint_y = None
