@@ -74,7 +74,7 @@ class MainApp(App):
             feed.add_widget(Post(
                 username=f"User {i + 1}",
                 text=f"Here is a sample post content for User {i + 1}.",
-                image_src="path_to_sample_image.jpg"  # Replace with an actual image path
+                image_src="C:\\Users\\Westnet\\Desktop\\imagenes elementos\\115x115x80.PNG"  
             ))
 
         scroll_view.add_widget(feed)
