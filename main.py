@@ -14,3 +14,6 @@ class Post(BoxLayout):
         self.spacing = 10
         self.size_hint_y = None
         self.height = 300
+
+        # Username label
+        self.add_widget(Label(
